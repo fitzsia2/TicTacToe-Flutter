@@ -5,7 +5,6 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -44,18 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
+        child: CounterDisplay(count: _counter),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
@@ -65,3 +53,26 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+
+class CounterDisplay extends StatelessWidget {
+  CounterDisplay({Key key, this.count}) : super(key: key);
+
+  final int count;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Text(
+            'You have pushed the button this many times:',
+          ),
+          Text(
+            '$count',
+            style: Theme.of(context).textTheme.headline4,
+          ),
+        ]
+    );
+  }
+}
+
