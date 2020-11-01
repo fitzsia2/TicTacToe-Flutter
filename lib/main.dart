@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hello_world/tiktactoe.dart';
 
 void main() {
   runApp(MyApp());
@@ -18,36 +19,31 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatefulWidget {
+class MyHomePage extends StatelessWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
 
   final String title;
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text(title),
       ),
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Counter(title: 'Counter 1'),
-            Counter(title: 'Counter 2'),
+            Container(
+                padding: EdgeInsets.all(8.0),
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: Theme.of(context).primaryColor,
+                    width: 2.0,
+                  ),
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: TicTacToe()),
           ],
         ),
       ),
